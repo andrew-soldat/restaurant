@@ -1,0 +1,605 @@
+
+//<МИКСИНЫ>
+@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin anim_cubic($time, $delay) {-webkit-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-ms-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
+@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin skew($num){-webkit-transform: skewX($num);-moz-transform: skewX($num);-ms-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
+@mixin cnt($h){display: flex;flex-direction: column;height: $h;text-align: center;align-items: stretch;justify-content: center;}
+@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
+@mixin flexbox() {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
+//</МИКСИНЫ>
+
+//<ШРИФТЫ>
+
+//<Подключаем шрифты>
+@import url('https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700|Lato|Open+Sans:300,400,700|Yeseva+One&display=swap');
+// @font-face {
+	
+// }
+// @font-face {
+	
+// }
+
+
+//font-display: swap;
+//</Подключаем шрифты>
+
+
+//<Шрифт по умолчанию>
+$fontfamily:'Yeseva One', cursive;
+//</Шрифт по умолчанию>
+//</ШРИФТЫ>
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Yeseva One', cursive;
+// font-family: 'Gentium Book Basic', serif;
+// font-family: 'Lato', sans-serif;
+//<ПЕРЕМЕННЫЕ>
+$minwidth:320px;
+$mw:1190;
+$md1:990.98;
+$md2:767.98;
+$md3:564.98;
+$md4:479.98;
+//</ПЕРЕМЕННЫЕ>
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+*{padding: 0px;margin: 0px;border: 0px;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+aside,nav,footer,header,section{display: block;}
+html,body{height: 100%;margin: 0;padding: 0;min-width: $minwidth;position: relative;width: 100%;color: #000;}
+body{font-size: 100%;line-height: 1;font-size: 14px;font-family: $fontfamily;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
+	&.lock{overflow: hidden;
+		@media (max-width:$md3+px){
+			width: 100%;
+			position: fixed;
+			overflow: hidden;
+		}
+	}
+}
+input,button,textarea{font-family: $fontfamily;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
+//-webkit-overflow-scrolling: touch;
+//animation-play-state: paused !important;
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>
+
+//<ОБОЛОЧКА>
+.wrapper{width: 100%;min-height: 100%;overflow: hidden;
+	@include flexbox();
+	flex-direction: column;
+	&.loaded{}
+}
+//</ОБОЛОЧКА>
+
+//<ОСНОВНАЯ СЕТКА>
+.container{max-width:$mw+px;margin: 0 auto;width: 100%;
+	padding: 0px 10px;
+	// @media (max-width:$md1+px){max-width: 750px;}
+	// @media (max-width:$md2+px){max-width: none;padding:0 10px;}
+}
+//</ОСНОВНАЯ СЕТКА>
+
+.ibg {
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+
+   img {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+   }
+}
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
+//@import "datepicker.scss";
+//@import "popover.min.scss";
+//@import "baguetteBox.scss";
+//@import "pagging.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "forms.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>
+
+.title {
+	margin: 0px 0px 15px 0px;
+	font-size: 36px;
+	color:#fff;
+
+	&--g {
+		color: #cc9900;
+	}
+	@media (max-width:$md3+px){
+		font-size: 25px;
+	}
+}
+
+.text {
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+// ================================================================================
+.content {
+	padding: 140px 0px 30px 0px;
+	position: relative;
+	flex: 1 1 auto;
+	@include flexbox();
+	flex-direction: column;
+	justify-content: center;
+
+	&__body {
+		position: relative;
+		z-index: 1;
+		max-width: 962px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	&__title {
+		font-size: 90px;
+		color:#fff;
+		margin: 0px 0px 30px 0px;
+		line-height: 1.2;
+
+		@media (max-width: 1000px) {
+			font-size: 60px;
+		}
+
+		@media (max-width:$md3+px) {
+			font-size: 40px;
+		}
+	}
+
+	&__icon {
+		margin: 0px 0px 30px 0px;
+	}
+
+	&__block {
+		
+	}
+
+	&__link {
+		margin: 0px 15px 15px;
+	}
+
+	&__image {
+		position: fixed;width: 100%;height: 100%;top: 0;left: 0;
+	}
+}
+.button {
+	width: 226px;
+	display: inline-block;
+	font-size: 18px;
+	color:#fff;
+	line-height: 55px;
+	text-align: center;
+	text-transform: uppercase;
+	border: 1px solid #000000;
+	background-color: rgba(0, 0, 0, 0.702);
+	opacity: 0.8;
+	position: relative;
+	z-index: 1;
+	transition: border 1.7s;
+	
+	&:after {
+		background-color: rgba(255, 255, 255, 0.278);
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		@include scale(0);
+		@include anim(0.5s,0s);
+	}
+
+	&:hover{
+		border: 1px solid rgb(255, 255, 255);
+		&:after {
+			@include scale(1);
+		}
+	}
+}
+// ===============================================================================
+.about {
+	position: relative;
+	padding: 60px 0 40px;
+	background: url('../img/about/bg.jpeg') center / cover no-repeat;
+
+	@media (max-width:$md3+px){
+		padding: 30px 0;
+	}
+
+	&__body {
+		@include flexbox();
+		justify-content: space-between;
+	}
+
+	&__content {
+		padding: 40px 0px 60px 70px;
+		// max-width: 430px;
+		flex: 1 1 500px;
+		text-align: center;
+
+		@media (max-width:$md1+px){
+			padding: 0px 0px 0px 20px;
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		@media (max-width:$md3+px){
+			width: 100%;
+			padding: 0;
+		}
+	}
+
+	&__title {
+	}
+
+	&__icon {
+		margin: 0px 0px 25px 0px;
+	}
+
+	&__text {
+		margin: 0px 0px 50px 0px;
+		color: #4c4c4c;
+	}
+
+	&__author {
+	}
+
+	&__bg {
+		flex: 1 1 53%;
+
+		@media (max-width:$md1+px){
+			display: none;
+		}
+
+		img {
+			display: block;
+			max-width: 100%;
+		}
+	}
+}
+// ================================================================================
+.ingredients {
+	position: relative;
+	padding: 100px 0;
+	background: url('../img/ingredients/bg.jpeg') center / cover no-repeat;
+
+	@media (max-width:$md1+px){
+		padding: 50px 0;
+	}
+	@media (max-width:$md2+px){
+		padding: 30px 0;
+	}
+
+	&__body {
+		margin: 0 0 0 auto;
+		max-width: 570px;
+		padding: 80px 70px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.7);
+		position: relative;
+		z-index: 9;
+
+		@media (max-width:$md3+px){
+			width: 100%;
+			padding: 30px;
+		}
+		@media (max-width:$md4+px){
+			padding: 15px;
+		}
+	}
+
+	&__title {
+	}
+
+	&__icon {
+		margin: 0px 0px 25px 0px;
+	}
+
+	&__text {
+		color:#fff;
+		margin: 0px 0px 65px 0px;
+		@media (max-width:$md3+px){
+			margin: 0px 0px 30px 0px;
+		}
+	}
+
+	&__img {
+		@include flexbox();
+		justify-content: space-around;
+
+		img {
+			@media (max-width:$md4+px){
+				justify-content: space-between;
+				flex: 0 0 90px;
+				height: 90px;
+			}
+		}
+	}
+}
+// ===============================================================================
+.menu {
+	position: relative;
+	padding: 100px 0;
+	background: url('../img/menu-bg.jpg') center / cover no-repeat;
+
+	@media (max-width:$md1+px){
+		padding: 50px 0 20px;
+	}
+	@media (max-width:$md2+px){
+		padding: 30px 0 0;
+	}
+
+	&__body {
+		position: relative;
+		z-index: 1;
+		@include flexbox();
+		justify-content: space-around;
+
+		@media (max-width:$md1+px){
+			flex-direction: column;
+			align-items:center;
+		}
+	}
+
+	&__column {
+		max-width: 430px;
+	}
+}
+.menu-item {
+	@media (max-width:$md1+px){
+		margin: 0 0 30px;
+	}
+
+	&:first-child{
+		margin: 0px 0px 65px 0px;
+
+		@media (max-width:$md1+px){
+			margin: 0 0 30px;
+		}
+	}
+
+	&__title {
+		text-align: center;
+	}
+
+	&__icon {
+		text-align: center;
+	}
+}
+.menu-item-dish {
+	margin: 30px 0px 0px 0px;
+
+	&__block {
+		padding: 0px 0px 10px 0px;
+		@include flexbox();
+		justify-content: space-between;
+		color: #c89f2d;
+		font-size: 21px;
+		border-bottom: 1px solid #fbf7c0;
+	}
+
+	&__name {
+		
+	}
+
+	&__price {
+	}
+
+	&__text {
+		padding: 7px 0px 0px 0px;
+	}
+}
+// ==============================================================================
+.reviews {
+	position: relative;
+	padding: 100px 0;
+	background: url('../img/reviews-bg.jpg') center / cover no-repeat;
+
+	@media (max-width:$md1+px){
+		padding: 50px 0;
+	}
+	@media (max-width:$md2+px){
+		padding: 30px 0;
+	}
+	&__body {
+		padding: 80px 70px 105px;
+		max-width: 770px;
+		margin: 0 auto;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.7);
+		position: relative;
+		z-index: 9;
+
+		@media (max-width:$md3+px){
+			padding: 30px 15px 15px 40px;
+		}
+	}
+
+	&__title {
+	}
+
+	&__icon {
+		margin: 0px 0px 15px 0px;
+	}
+
+	&__text {
+		margin-bottom: 25px;
+		font-family: 'Gentium Book Basic', serif;
+		font-size: 25px;
+		color: #dde0df;
+		line-height: 1.8;
+		position: relative;
+
+		img {
+			display: block;
+			position: absolute;
+			top: -5px;
+			left: -37px;
+			z-index: 9;
+		}
+	}
+
+	&__author {
+		color: #fff;
+	}
+}
+// ==========================================================================
+.reservations {
+	position: relative;
+	padding: 100px 0;
+	background: url('../img/about/bg.jpeg') center / cover no-repeat;
+
+	@media (max-width:$md1+px){
+		padding: 50px 0;
+	}
+	@media (max-width:$md2+px){
+		padding: 30px 0;
+	}
+
+	&__body {
+		position: relative;
+		z-index: 9;
+		@include flexbox();
+		justify-content: space-between;
+
+		@media (max-width:$md1+px){
+			justify-content: center;
+		}
+	}
+
+	&__column {
+		width: 23.08%;
+		position: relative;
+
+		@media (max-width:$md1+px){
+			display: none;
+		}
+	}
+
+	&__block {
+		max-width: 500px;
+		padding: 0px 70px 0px 0px;
+		
+		@media (max-width:$md1+px){
+			max-width: 430px;
+			padding: 0;
+		}
+	}
+
+	&__content {
+		text-align: center;
+	}
+
+	&__image {
+		position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+	}
+
+	&__title {
+	}
+
+	&__icon {
+		margin: 0px 0px 15px 0px;
+	}
+
+	&__text {
+		color: #4c4c4c;
+		margin: 0px 0px 40px 0px;
+		p {
+			&:first-child{
+				margin: 0px 0px 10px 0px;
+			}
+		}
+	}
+
+	&__bg {
+		position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+	}
+}
+.reservations-form {
+
+	&__body {
+		@include flexbox();
+		justify-content: space-between;
+
+		@media (max-width:430px){
+			flex-wrap: wrap;
+		}
+	}
+
+	&__column {
+		width: 200px;
+
+		@media (max-width: 430px){
+			width: 100%;
+		}
+	}
+
+	&__text {
+		font-family: 'Open Sans', sans-serif;
+		font-size: 14px;
+		color: #c9a131;
+		font-weight: 700;
+	}
+
+	&__line {
+		margin: 10px 0px 30px 0px;
+	}
+
+	&__button {
+		text-align: center;
+	}
+
+	&__btn {
+		font-family: 'Open Sans', sans-serif;
+		font-size: 16px;
+		color:#fff;
+		padding: 0 60px;
+		display: inline-block;
+		border: 1px solid #c89f2d;
+		background-color: rgba(200, 159, 45, 0.98);
+		line-height: 34px;
+		position: relative;
+		
+		&:after {
+			content: '';
+			width: 0;
+			height: 100%;
+			background: rgba(134, 105, 24, 0.98);
+			@include anim(0.3s,0s);
+			position: absolute;
+			top: 0;
+			left: 50%;
+			z-index: 1;
+		}
+
+		span {
+			position: relative;
+			z-index: 2;
+		}
+		&:hover:after {
+			left: 0;
+			width: 100%;
+		}
+	}
+}
+// ================================================================================
+

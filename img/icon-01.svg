@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 96px;
+        fill: #f2f4f4;
+        text-anchor: middle;
+        font-family: Georgia;
+      }
+    </style>
+  </defs>
+  <text id="icon-01.svg" class="cls-1" x="-42.245" y="-0.43"><tspan x="-42.245">“</tspan></text>
+</svg>
